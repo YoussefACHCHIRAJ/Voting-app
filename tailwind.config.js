@@ -17,7 +17,6 @@ module.exports = {
 
                 black: colors.black,
                 white: colors.white,
-                gray: colors.trueGray,
                 'gray-background': '#f7f8fc',
                 'blue': '#328af1',
                 'blue-hover': '#2879bd',
@@ -61,6 +60,6 @@ module.exports = {
 
     plugins: [
         require('@tailwindcss/forms'),
-        // require('@tailwindcss/line-clamp'),
+        require('@tailwindcss/line-clamp'),
     ],
 };
