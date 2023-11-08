@@ -43,24 +43,19 @@
                     </button>
                 </div>
             </div>
-            <div class="flex px-2 py-6">
-                <a href="#" class="flex-none">
-                    <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
-                        class="w-14 h-14 rounded-xl">
-                </a>
-                <div class="mx-4">
+            <div class="flex flex-1 px-2 py-6">
+                <div class="flex-none">
+                    <a href="#">
+                        <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
+                            class="w-14 h-14 rounded-xl">
+                    </a>
+                </div>
+                <div class="mx-4  w-full">
                     <h4 class="text-xl font-semibold">
                         <a href="#" class="hover:underline">A random title can go here</a>
                     </h4>
                     <div class="text-gray-600 mt-3 line-clamp-3">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore tempora eaque nostrum laborum
-                        alias ullam delectus nemo fugiat perferendis. Est quos et officiis in perspiciatis fuga, odio,
-                        cupiditate voluptatem, nostrum harum nisi commodi repellendus reiciendis corrupti eaque veniam
-                        dolorum distinctio ducimus cumque impedit unde? Consectetur rem temporibus tempore odio velit!
-                        Accusantium, culpa quidem quam expedita alias vel ducimus labore eligendi iure animi molestias
-                        nostrum possimus. Sint cumque sequi ipsum dolore quasi voluptatum libero animi eos itaque? Iusto
-                        mollitia maiores, qui itaque ipsa odit soluta placeat, deleniti rem ea dolor reprehenderit
-                        adipisci labore vitae et ipsam dolores numquam debitis necessitatibus id.
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     </div>
                     <div class="flex items-center justify-between mt-6">
                         <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
@@ -76,7 +71,7 @@
                                 open
                             </div>
                             <button
-                                class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-7  px-3 flex justify-center transition duration-150">
+                                class="relative border bg-gray-100 hover:bg-gray-200 rounded-full h-7  px-3 flex justify-center transition duration-150">
                                 <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                                     stroke="currentColor" className="w-6 h-6">
                                     <path strokeLinecap="round" strokeLinejoin="round"
