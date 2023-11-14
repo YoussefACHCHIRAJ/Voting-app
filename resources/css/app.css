@@ -59,3 +59,7 @@
     background: theme('colors.purple');
     opacity: 1;
 }
+
+.is-admin {
+    border: 2px solid theme('colors.blue');
+}

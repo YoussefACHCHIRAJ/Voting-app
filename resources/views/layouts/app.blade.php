@@ -82,7 +82,7 @@
                             <span class="ml-1">Attach</span>
                         </button>
                         <button type="submit" class="w-1/2 h-11 text-xs text-white bg-blue font-semibold rounded-xl border bordeblue hover:bg-blue-hover transition duration-150 px-6 py-3 ease-in">
-                            <span class="ml-1">Attach</span>
+                            <span class="ml-1">Submit</span>
                         </button>
                     </div>
                 </form>
