@@ -43,7 +43,17 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function ideas(){
+    public function ideas()
+    {
         return $this->hasMany(Idea::class);
+    }
+
+    public function getAvatar()
+    {
+        return 'https://www.gravatar.com/avatar/'
+            . md5($this->email)
+            . '?s=200'
+            . '&d=mp';
+
     }
 }

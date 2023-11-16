@@ -30,7 +30,14 @@
     </div> <!-- end filters -->
     <div class="ideas-container space-y-6 my-6">
         @foreach ($ideas as $idea)
-            <div
+            <div x-data
+                @click="
+                    const target = $event.target.tagName.toLowerCase();
+                    const exceptions = ['button','svg','path','a'];
+                    const mustClicked = !(exceptions.includes(target));
+                    if( mustClicked )
+                        $event.target.closest('.idea-container').querySelector('.idea-link').click()
+                "
                 class="idea-container hover:shadow-card cursor-pointer transition duration-150 ease-in bg-white rounded-xl flex">
                 <div class="hidden md:block border-r border-gray-100 px-5 py-8">
                     <div class="text-center">
@@ -47,13 +54,14 @@
                 <div class="flex flex-1 px-2 py-6 flex-col md:flex-row">
                     <div class="flex-none mx-4 md:mx-0">
                         <a href="#">
-                            <img src="https://source.unsplash.com/200x200/?face&crop=face&v={{ $idea->id }}" alt="avatar"
-                                class="w-14 h-14 rounded-xl">
+                            <img src="{{ $idea->user->getAvatar()}}"
+                                alt="avatar {{ $idea->user->email }}" class="w-14 h-14 rounded-xl">
                         </a>
                     </div>
                     <div class="mx-4  w-full">
                         <h4 class="text-xl font-semibold mt-2 md:mt-0">
-                            <a href="{{ route('idea.show', $idea) }}" class="hover:underline">{{ $idea->title }}</a>
+                            <a href="{{ route('idea.show', $idea) }}"
+                                class="idea-link hover:underline">{{ $idea->title }}</a>
                         </h4>
                         <div class="text-gray-600 mt-3 line-clamp-3">
                             {{ $idea->description }}
