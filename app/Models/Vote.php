@@ -9,5 +9,5 @@ class Vote extends Model
 {
     use HasFactory;
 
-    
+    public $guarded = [];
 }
