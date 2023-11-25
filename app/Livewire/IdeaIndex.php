@@ -27,23 +27,7 @@ class IdeaIndex extends Component
 
         if (!auth()->check()) return redirect(route('login'));
 
-        if ($this->hasVoted) {
-            try{
-                $this->idea->removeVote(auth()->user());
-            }catch(VoteNotFoundException $e){
-                // do noting
-            }
-            $this->votesCount--;
-            $this->hasVoted = false;
-        } else {
-            try{
-                $this->idea->vote(auth()->user());
-            }catch(DuplicateVoteException $e){
-                // do noting
-            }
-            $this->votesCount++;
-            $this->hasVoted = true;
-        }
+
     }
 
 
