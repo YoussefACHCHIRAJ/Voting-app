@@ -1,23 +1,24 @@
 <div>
     <div class="filters space-y-3 md:space-y-0 md:space-x-3 flex flex-col md:flex-row">
         <div class="w-full md:w-1/3">
-            <select wire:model="category" name="category" id="category" class="w-full text-xs rounded-xl px-4 py-2 border-none">
-                <option value="All Category">All Category</option>
+            <select wire:model.live="category" name="category" id="category"
+                class="w-full text-xs rounded-xl px-4 py-2 border-none">
+                <option value="All">All Categories</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->name }}">{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>
         <div class="w-full md:w-1/3">
-            <select name="othe_filterso" id="othe_filterso" class="w-full  text-xs rounded-xl px-4 py-2 border-none">
-                <option value="Filter One">Filter One</option>
-                <option value="Filter Two">Filter Two</option>
-                <option value="Filter Three">Filter Three</option>
-                <option value="Filter Four">Filter Four</option>
+            <select wire:model.live="filters" name="othe_filterso" id="othe_filterso"
+                class="w-full  text-xs rounded-xl px-4 py-2 border-none">
+                <option value="No filters">No filters</option>
+                <option value="Top voted">Top voted</option>
+                <option value="My ideas">My ideas</option>
             </select>
         </div>
         <div class="w-full md:w2/3 relative">
-            <input type="text" placeholder="Find an idea"
+            <input wire:model.live='search' type="text" placeholder="Find an idea"
                 class="w-full text-xs rounded-xl px-4 py-2 pl-8 border-none placeholder:text-gray-900">
             <div class="absolute top-0 flex items-center h-full ml-2">
                 <svg class="w-4 h-4 text-gray-700" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -29,9 +30,14 @@
         </div>
     </div> <!-- end filters -->
     <div class="ideas-container space-y-6 my-6">
-        @foreach ($ideas as $idea)
+        @forelse ($ideas as $idea)
             <livewire:idea-index :key="$idea->id" :idea="$idea" />
-        @endforeach
+        @empty
+            <div class="mx-auto w-70 mt-12 space-y-3">
+                <p class="text-gray-400 font-bold">No ideas were found...</p>
+                <p class="text-gray-400 font-bold">Pleaze Come back later</p>
+            </div>
+        @endforelse
     </div> <!-- end ideas container -->
     <div class="my-2">
         {{-- {{ $ideas->links() }} --}}

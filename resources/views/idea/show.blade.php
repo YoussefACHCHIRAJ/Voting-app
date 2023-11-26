@@ -1,6 +1,6 @@
 <x-app-layout>
     <div>
-        <a href="/" class="flex items-center font-semibold hover:underline">
+        <a wire:navigate href="/" class="flex items-center font-semibold hover:underline">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
                 className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />

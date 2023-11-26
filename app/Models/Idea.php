@@ -58,7 +58,7 @@ class Idea extends Model
             ->exists();
     }
 
-    public function vote(User $user)
+    public function vote(?User $user)
     {
         if ($this->isIdeaVotedByUser($user)) throw new DuplicateVoteException;
 

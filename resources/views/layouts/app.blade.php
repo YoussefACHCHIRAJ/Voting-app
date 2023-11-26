@@ -36,11 +36,11 @@
                             </a>
                         </form>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-900 underline">Log
+                        <a wire:navigate href="{{ route('login') }}" class="text-sm text-gray-900 underline">Log
                             in</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="text-sm text-gray-900 underline">Register</a>
+                            <a wire:navigate href="{{ route('register') }}" class="text-sm text-gray-900 underline">Register</a>
                         @endif
                     @endauth
                 </div>

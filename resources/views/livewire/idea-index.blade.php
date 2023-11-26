@@ -36,7 +36,7 @@
         </div>
         <div class="mx-4  w-full">
             <h4 class="text-xl font-semibold mt-2 md:mt-0">
-                <a href="{{ route('idea.show', $idea) }}" class="idea-link hover:underline">{{ $idea->title }}</a>
+                <a  href="{{ route('idea.show', $idea) }}" class="idea-link hover:underline">{{ $idea->title }}</a>
             </h4>
             <div class="text-gray-600 mt-3 line-clamp-3">
                 {{ $idea->description }}

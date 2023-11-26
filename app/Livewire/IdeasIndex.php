@@ -14,38 +14,74 @@ use Livewire\WithPagination;
 class IdeasIndex extends Component
 {
     use WithPagination;
+
     public $status;
 
-    #[Url(keep:true)]
+    #[Url(keep: true)]
     public $category;
-    protected $queryString =  ['status', 'category'];
+
+    #[Url(keep: true)]
+    public $filters;
+
+    #[Url(keep: true)]
+    public $search = '';
+
+    protected $queryString =  ['status', 'category', 'filters', 'search'];
 
 
     #[On('queryStringUpdateStatus')]
-    public function queryStringUpdateStatus($newStatus){
+
+    public function mount()
+    {
+        $this->status = request()->status ?? 'All';
+    }
+
+    public function updatedFilters()
+    {
+        $this->resetPage();
+        if ($this->filters === 'My ideas') {
+            if (!auth()->user()) {
+                return redirect()->route('login');
+            }
+        }
+    }
+
+    public function updatedCategory()
+    {
+        $this->resetPage();
+    }
+    public function queryStringUpdateStatus($newStatus)
+    {
         $this->status = $newStatus;
         $this->resetPage();
     }
 
+
     public function render()
     {
         $statuses = Status::all()->pluck('id', 'name');
-        $category = Category::all();
+        $categories = Category::all();
         // dd($statuses);
         return view('livewire.ideas-index', [
             'ideas' => Idea::with('user', 'category', 'status')
                 ->when($this->status && $this->status !== 'All', function ($query) use ($statuses) {
                     return $query->where('status_id', $statuses->get($this->status));
-                })
-                ->addSelect([
+                })->when($this->category && $this->category !== 'All', function ($query) use ($categories) {
+                    return $query->where('category_id', $categories->pluck('id', 'name')->get($this->category));
+                })->when($this->filters && $this->filters === 'Top voted', function ($query) {
+                    return $query->orderByDesc('votes_count');
+                })->when($this->filters && $this->filters === 'My ideas', function ($query) {
+                    return $query->where('user_id', auth()->id());
+                })->when((strlen($this->search) > 3), function ($query) {
+                    return $query->where('title', 'like', '%' . $this->search . '%');
+                })->addSelect([
                     'voted_by_user' => Vote::select('id')
                         ->where('user_id', auth()->id())
                         ->whereColumn('idea_id', 'ideas.id')
-                ])
-                ->withCount('votes')
+                ])->withCount('votes')
                 ->latest('id')
                 ->simplePaginate(10),
-            'categories' => $category,
+            'categories' => $categories,
         ]);
     }
 }
