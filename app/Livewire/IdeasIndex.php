@@ -29,7 +29,6 @@ class IdeasIndex extends Component
     protected $queryString =  ['status', 'category', 'filters', 'search'];
 
 
-    #[On('queryStringUpdateStatus')]
 
     public function mount()
     {
@@ -50,6 +49,8 @@ class IdeasIndex extends Component
     {
         $this->resetPage();
     }
+    
+    #[On('queryStringUpdateStatus')]
     public function queryStringUpdateStatus($newStatus)
     {
         $this->status = $newStatus;
@@ -61,7 +62,6 @@ class IdeasIndex extends Component
     {
         $statuses = Status::all()->pluck('id', 'name');
         $categories = Category::all();
-        // dd($statuses);
         return view('livewire.ideas-index', [
             'ideas' => Idea::with('user', 'category', 'status')
                 ->when($this->status && $this->status !== 'All', function ($query) use ($statuses) {

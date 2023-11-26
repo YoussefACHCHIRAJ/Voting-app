@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Exceptions\DuplicateVoteException;
 use App\Exceptions\VoteNotFoundException;
 use App\Models\Idea;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class IdeaShow extends Component
@@ -20,6 +21,11 @@ class IdeaShow extends Component
         $this->idea = $idea;
         $this->votesCount = $votesCount;
         $this->hasVoted = $idea->isIdeaVotedByUser(auth()->user());
+    }
+
+    #[On('statusWasUpdated')]
+    public function statusWasUpdated(){
+        $this->idea->refresh();
     }
 
     public function vote()
