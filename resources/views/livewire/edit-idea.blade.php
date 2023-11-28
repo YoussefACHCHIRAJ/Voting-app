@@ -1,4 +1,4 @@
-<div x-cloak x-data="{ isOpen: false }" x-init="@this.on('ideaWasUpdated', () => isOpen = false)" @showing-idea-modal.window="isOpen=true" x-show="isOpen"
+<div x-cloak x-data="{ isOpen: false }" x-init="@this.on('ideaWasUpdated', () => isOpen = false)" @showing-edit-idea-modal.window="isOpen=true" x-show="isOpen"
     @keydown.escape.window="isOpen=false" class="relative z-10" aria-labelledby="modal-title" role="dialog"
     aria-modal="true">
     <div x-transition x-show.transition.opacity="isOpen"

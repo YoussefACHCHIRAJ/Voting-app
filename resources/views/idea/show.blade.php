@@ -10,9 +10,14 @@
         </a>
     </div>
 
-    <livewire:idea-show :idea="$idea" :votesCount="$votesCount"/>
+    <livewire:idea-show :idea="$idea" :votesCount="$votesCount" />
 
-    <livewire:edit-idea :idea="$idea" />
+    @can('update', $idea)
+        <livewire:edit-idea :idea="$idea" />
+    @endcan
+    @can('delete', $idea)
+        <livewire:delete-idea :idea="$idea" />
+    @endcan
 
     <div class="comments-container relative space-y-6 md:ml-22 my-8 pt-4 mt-1">
         <div class="comment-container relative  mt-4 bg-white rounded-xl flex">
@@ -35,7 +40,7 @@
                             <div>10 hours ago</div>
 
                         </div>
-                        <div x-data="{isOpen: false}" class="flex items-center space-x-2">
+                        <div x-data="{ isOpen: false }" class="flex items-center space-x-2">
 
                             <button @click="isOpen = !isOpen"
                                 class="relative border bg-gray-100 hover:bg-gray-200 rounded-full h-7  px-3 flex justify-center transition duration-150">
@@ -44,7 +49,7 @@
                                     <path strokeLinecap="round" strokeLinejoin="round"
                                         d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                                 </svg>
-                                <ul x-show="isOpen"  x-cloak @click.away="isOpen = false"
+                                <ul x-show="isOpen" x-cloak @click.away="isOpen = false"
                                     class="z-10 absolute w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 ml-8 top-4 -right-40">
                                     <li><a href="#"
                                             class="hover:bg-gray-100 block px-5 py-3 transition duration-150">Mark as

@@ -40,17 +40,24 @@
                             <ul x-show="isOpen" x-cloak @click.away="isOpen = false"
                                 class="absolute w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 ml-8 top-8 -left-20 z-10 md:left-0 -right-40">
                                 @can('update', $idea)
-
-                                <li
-                                @click="
-                                isOpen=false
-                                $dispatch('showing-idea-modal')">
-                                <a href="#" class="hover:bg-gray-100 block px-5 py-3 transition duration-150">
-                                    Edit Idea</a>
-                                </li>
+                                    <li
+                                        @click="
+                                            isOpen=false
+                                            $dispatch('showing-edit-idea-modal')">
+                                        <a href="#" class="hover:bg-gray-100 block px-5 py-3 transition duration-150">
+                                            Edit Idea</a>
+                                    </li>
                                 @endcan
-                                <li><a href="#" class="hover:bg-gray-100 block px-5 py-3 transition duration-150">
-                                        Delete Idea</a></li>
+
+                                @can('delete', $idea)
+                                    <li
+                                        @click="
+                                isOpen=false
+                                $dispatch('showing-delete-idea-modal')">
+                                        <a href="#" class="hover:bg-gray-100 block px-5 py-3 transition duration-150">
+                                            Delete Idea</a>
+                                    </li>
+                                @endcan
                                 <li><a href="#" class="hover:bg-gray-100 block px-5 py-3 transition duration-150">
                                         Mark as spam</a></li>
                             </ul>
