@@ -28,6 +28,11 @@ class IdeaShow extends Component
         $this->idea->refresh();
     }
 
+    #[On('ideaWasUpdated')]
+    public function ideaWasUpdated(){
+        $this->idea->refresh();
+    }
+
     public function vote()
     {
 
