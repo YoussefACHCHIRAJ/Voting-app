@@ -1,4 +1,4 @@
-<div x-cloak x-data="{ isOpen: false }" @showing-delete-idea-modal.window="isOpen=true" x-show="isOpen"
+<div x-cloak x-data="{ isOpen: false }" @showing-mark-as-spam-idea-modal.window="isOpen=true" x-show="isOpen"
     @keydown.escape.window="isOpen=false" class="relative z-10" aria-labelledby="modal-title" role="dialog"
     aria-modal="true">
     <div x-transition x-show.transition.opacity="isOpen"
@@ -18,18 +18,17 @@
                             </svg>
                         </div>
                         <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                            <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Delete Idea
+                            <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Mark Idea as Spam
                             </h3>
                             <div class="mt-2">
-                                <p class="text-sm text-gray-500">Are you sure you want to delete this idea? this action
-                                    can not be undone</p>
+                                <p class="text-sm text-gray-500">Are you sure you want to mark this idea as a spam?</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                     <button wire:click="deleteIdea" type="button"
-                        class="inline-flex w-full justify-center rounded-md bg-blue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-hover sm:ml-3 sm:w-auto">Delete</button>
+                        class="inline-flex w-full justify-center rounded-md bg-blue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-hover sm:ml-3 sm:w-auto">Mark as Spam</button>
                     <button @click="isOpen=false" type="button"
                         class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-blue hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
                 </div>
