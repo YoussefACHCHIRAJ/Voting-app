@@ -1,4 +1,4 @@
-<div x-cloak x-data="{ isOpen: false }" x-init="@this.on('ideaWasUpdated', () => isOpen = false)" @showing-edit-idea-modal.window="isOpen=true" x-show="isOpen"
+<div x-cloak x-data="{ isOpen: false }" x-init="Livewire.on('ideaWasUpdated', () => isOpen = false)" @showing-edit-idea-modal.window="isOpen=true" x-show="isOpen"
     @keydown.escape.window="isOpen=false" class="relative z-10" aria-labelledby="modal-title" role="dialog"
     aria-modal="true">
     <div x-transition x-show.transition.opacity="isOpen"
@@ -6,7 +6,7 @@
 
     <div class="fixed bottom-0  z-10 w-screen overflow-y-auto">
         <div class="min-h-full ">
-            <div x-transition x-show.transition.origin.bottom.delay.350ms="isOpen"
+            <div x-transition x-show.transition.origin.bottom.duration.350ms="isOpen"
                 class="modal relative transform overflow-hidden rounded-tl-xl rounded-tr-xl bg-white transition-all py-4 sm:w-full sm:max-w-lg">
                 <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                     <div class="absolute top-0 right-0 pt-4 pr-4">

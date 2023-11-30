@@ -1,4 +1,4 @@
-<div class="relative" x-data="{ isOpen: false }" x-init="@this.on('statusWasUpdated', () => isOpen = false)">
+<div class="relative" x-data="{ isOpen: false }" x-init="Livewire.on('statusWasUpdated', () => isOpen = false)">
     <button type="button" @click="isOpen = !isOpen"
         class="mt-3 md:mt-0 flex items-center justify-center w-full md:w-36 h-11 text-sm bg-gray-200 font-semibold rounded-xl border borde-gray-100 hover:border-gray-400 transition duration-150 px-6 py-3 ease-in">
         <span>Set Status</span>

@@ -19,7 +19,7 @@
         <livewire:delete-idea :idea="$idea" />
     @endcan
 
-        <livewire:mark-idea-as-spam />
+        <livewire:mark-idea-as-spam :idea="$idea" />
 
 
     <div class="comments-container relative space-y-6 md:ml-22 my-8 pt-4 mt-1">

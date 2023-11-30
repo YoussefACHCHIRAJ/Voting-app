@@ -49,7 +49,7 @@ class IdeasIndex extends Component
     {
         $this->resetPage();
     }
-    
+
     #[On('queryStringUpdateStatus')]
     public function queryStringUpdateStatus($newStatus)
     {
@@ -72,6 +72,8 @@ class IdeasIndex extends Component
                     return $query->orderByDesc('votes_count');
                 })->when($this->filters && $this->filters === 'My ideas', function ($query) {
                     return $query->where('user_id', auth()->id());
+                })->when($this->filters && $this->filters === 'Spam idea', function ($query) {
+                    return $query->where('spam_reports' , '>', 0)->orderByDesc('spam_reports');
                 })->when((strlen($this->search) > 3), function ($query) {
                     return $query->where('title', 'like', '%' . $this->search . '%');
                 })->addSelect([
