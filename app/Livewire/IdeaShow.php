@@ -37,6 +37,10 @@ class IdeaShow extends Component
     public function ideaWasMarkedAsSpam(){
         $this->idea->refresh();
     }
+    #[On('commentWasAdded')]
+    public function commentWasAdded(){
+        $this->idea->refresh();
+    }
     public function vote()
     {
 

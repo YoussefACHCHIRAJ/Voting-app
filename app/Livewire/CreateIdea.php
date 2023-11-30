@@ -32,8 +32,7 @@ class CreateIdea extends Component
             'description'=> $this->description,
         ]);
 
-        session()->flash('sucess_message', 'The idea was created sucessfuly.');
-        return redirect()->route('idea.index');
+        return redirect()->route('idea.index')->with('success_message', 'The idea was created sucessfuly.');
     }
 
     public function render()

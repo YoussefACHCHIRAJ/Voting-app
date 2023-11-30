@@ -46,7 +46,7 @@ class EditIdea extends Component
         ]);
 
         $this->idea->save();
-        $this->dispatch('ideaWasUpdated');
+        $this->dispatch('ideaWasUpdated', 'idea was updated successfully');
     }
 
     public function render()

@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Comment;
 use App\Models\Idea;
 use App\Models\Vote;
 use Illuminate\Http\Response;
@@ -23,8 +24,10 @@ class DeleteIdea extends Component
             abort(Response::HTTP_FORBIDDEN);
         }
         Vote::where('idea_id', $this->idea->id)->delete();
+        Comment::where('idea_id', $this->idea->id)->delete();
         Idea::destroy($this->idea->id);
-        return redirect()->route('idea.index');
+
+        return redirect()->route('idea.index')->with('success_message', 'The idea was deleted sucessfuly.');
     }
 
 

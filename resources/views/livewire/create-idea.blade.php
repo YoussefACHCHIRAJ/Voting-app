@@ -42,14 +42,6 @@
         </button>
     </div>
     <div>
-        @if (session('sucess_message'))
-            <div
-                x-data="{ isShow: true}"
-                x-init=" setTimeout(() => isShow=false, 5000)"
-                x-show.transition.duration.2000ms="isShow"
-                class="text-green mt-3">
-                {{ session('sucess_message') }}
-            </div>
-        @endif
+      
     </div>
 </form>

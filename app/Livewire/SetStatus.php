@@ -32,7 +32,7 @@ class SetStatus extends Component
             $this->notifyAllVoters();
         }
 
-        $this->dispatch('statusWasUpdated');
+        $this->dispatch('statusWasUpdated', 'status has been changed to '. $this->idea->status->name);
     }
 
     public function notifyAllVoters(){

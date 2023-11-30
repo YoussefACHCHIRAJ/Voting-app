@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Idea;
 use App\Models\Status;
 use App\Models\User;
@@ -54,6 +55,11 @@ class DatabaseSeeder extends Seeder
                         'idea_id' => $idea_id
                     ]);
             }
+        }
+
+        // generate comments for our ideas
+        foreach(Idea::all() as $idea){
+            Comment::factory(10)->create(['idea_id' => $idea->id]);
         }
     }
 }

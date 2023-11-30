@@ -36,7 +36,8 @@
         @forelse ($ideas as $idea)
             <livewire:idea-index :key="$idea->id" :idea="$idea" />
         @empty
-            <div class="mx-auto w-70 mt-12 space-y-3">
+            <div class="mx-auto w-70 mt-12 space-y-3 text-center    ">
+                <img src="{{ asset('images/no-ideas.svg') }}" alt="No Ideas" class="mx-auto mix-blend-luminosity">
                 <p class="text-gray-400 font-bold">No ideas were found...</p>
                 <p class="text-gray-400 font-bold">Pleaze Come back later</p>
             </div>

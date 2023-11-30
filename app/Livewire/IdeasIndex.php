@@ -57,6 +57,8 @@ class IdeasIndex extends Component
         $this->resetPage();
     }
 
+    
+
 
     public function render()
     {
@@ -80,7 +82,7 @@ class IdeasIndex extends Component
                     'voted_by_user' => Vote::select('id')
                         ->where('user_id', auth()->id())
                         ->whereColumn('idea_id', 'ideas.id')
-                ])->withCount('votes')
+                ])->withCount('votes', 'comments')
                 ->latest('id')
                 ->simplePaginate(10),
             'categories' => $categories,
