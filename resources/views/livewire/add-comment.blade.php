@@ -1,5 +1,23 @@
-<div class="relative w-full" x-data="{ isOpen: false }" x-init="Livewire.on('commentWasAdded', () => isOpen = false)">
-    <button type="button" @click="isOpen = !isOpen"
+<div class="relative w-full" x-data="{ isOpen: false }" x-init="Livewire.on('commentWasAdded', () => {
+    isOpen = false;
+    Livewire.hook('morph.added', ({ el }) => {
+        const lastComment = document.querySelector('.comment-container:last-child');
+        lastComment.scrollIntoView({ behavior: 'smooth' });
+        lastComment.classList.remove('bg-white');
+        lastComment.classList.add('bg-sky-300');
+        setTimeout(() => {
+            lastComment.classList.add('bg-white');
+            lastComment.classList.remove('bg-sky-300');
+        }, 5000);
+})
+
+
+})">
+    <button @click="
+            isOpen = !isOpen
+            $nextTick(() => $refs.comment.focus())
+        "
+        type="button"
         class="w-full md:w-32 h-11 text-sm text-white bg-blue font-semibold rounded-xl border bordeblue hover:bg-blue-hover transition duration-150 px-6 py-3 ease-in">
         <span class="ml-1">Reply</span>
     </button>
@@ -8,7 +26,7 @@
         @auth
             <form wire:submit.prevent="addComment" action="#" class="space-y-4 px-4 py-6">
                 <div>
-                    <textarea wire:model="body" name="post_comment" id="post_comment" cols="30" rows="4"
+                    <textarea x-ref="comment" wire:model="body" name="post_comment" id="post_comment" cols="30" rows="4"
                         class="w-full text-sm bg-gray-100 rounded-xl placeholder:text-gray-900 border-none px-4 py-2"
                         placeholder="Go ahead, don't be shy. Share your thoughts...">{{ $body }}</textarea>
                     @error('body')

@@ -24,7 +24,7 @@ module.exports = {
                 'red' : '#ec454f',
                 'red-100' : '#fee2e2',
                 'green' : '#1aab8b',
-                'green-50': '#f0fdf4',
+                // 'sky-500' : ' rgb(14 165 233)',
                 'purple' : '#8b60ed',
             },
             spacing: {

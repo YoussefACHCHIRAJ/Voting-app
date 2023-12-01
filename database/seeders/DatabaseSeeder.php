@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
 
         // generate comments for our ideas
         foreach(Idea::all() as $idea){
-            Comment::factory(10)->create(['idea_id' => $idea->id]);
+            Comment::factory(5)->create(['idea_id' => $idea->id]);
         }
     }
 }

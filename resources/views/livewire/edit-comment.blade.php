@@ -1,6 +1,19 @@
-<div x-cloak x-data="{ isOpen: false }" x-init="Livewire.on('ideaWasUpdated', () => isOpen = false)" @showing-edit-idea-modal.window="isOpen=true" x-show="isOpen"
-    @keydown.escape.window="isOpen=false" class="relative z-10" aria-labelledby="modal-title" role="dialog"
-    aria-modal="true">
+<div
+    x-cloak
+    x-data="{ isOpen: false }"
+    x-init="
+        Livewire.on('commentWasUpdated', () => {
+            isOpen = false;
+            $refresh;
+        })
+        Livewire.on('setCommentWasAdded', () => {
+            isOpen = true;
+            $nextTick(() => $refs.body.focus())
+        })
+
+    "
+    @keydown.escape.window="isOpen=false"
+    class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div x-transition x-show.transition.opacity="isOpen"
         class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
@@ -18,34 +31,13 @@
 
                         </button>
                     </div>
-                    <h3 class="text-center text-lg font-medium text-gray-900">Edit Idea</h3>
-                    <p class="text-xs text-center mt-4 text-gray-500">You have one hour to edit your idea from the time
-                        you created it</p>
-                    <form wire:submit.prevent="editIdea" action="#" method="POST" class="space-y-4 px-4 py-6">
+                    <h3 class="text-center text-lg font-medium text-gray-900">Edit Your Comment</h3>
+                    <form wire:submit.prevent="editComment" action="#" method="POST" class="space-y-4 px-4 py-6">
                         <div>
-                            <input type="text" wire:model="title"
-                                class="w-full bg-gray-100 text-sm rounded-xl placeholder:text-gray-900 px-4 py-2 border-none"
-                                placeholder="Your Idea">
-                            @error('title')
-                                <p class="text-red text-xs mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div>
-                            <select wire:model="category" name="category_add" id="category_add"
-                                class="w-full bg-gray-100 text-sm rounded-xl px-4 py-2 border-none">
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('category')
-                                <p class="text-red text-xs mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div>
-                            <textarea wire:model="description" name="idea" id="idea" cols="30" rows="4"
+                            <textarea x-ref='body' wire:model="body" name="body" id="body" cols="30" rows="10"
                                 class="w-full bg-gray-100 rounded-xl placeholder:text-gray-900 text-sm px-4 py-2 border-none"
-                                placeholder="Describe your idea">{{ $description }}</textarea>
-                            @error('description')
+                                placeholder="Describe your comment">{{ $body }}</textarea>
+                            @error('body')
                                 <p class="text-red text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>

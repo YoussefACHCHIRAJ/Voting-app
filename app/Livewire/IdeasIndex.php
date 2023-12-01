@@ -57,7 +57,7 @@ class IdeasIndex extends Component
         $this->resetPage();
     }
 
-    
+
 
 
     public function render()

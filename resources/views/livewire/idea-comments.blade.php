@@ -6,6 +6,9 @@
                 <livewire:idea-comment :key="$comment->id" :comment="$comment" :ideaUserIdea="$ideaUserIdea"/>
             @endforeach
         </div>
+        <div class="my-6 ml-22">
+            {{ $comments->onEachSide(0)->links() }}
+        </div>
     @else
         <div class="mx-auto w-70 mt-12">
             <img src="{{ asset('images/no-ideas.svg') }}" alt="No Ideas" class="mx-auto mix-blend-luminosity">

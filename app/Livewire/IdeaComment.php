@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Comment;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class IdeaComment extends Component
@@ -14,6 +15,12 @@ class IdeaComment extends Component
     public $publishedDate;
     public $ideaUserIdea;
 
+    #[On('commentWasUpdated')]
+    public function commentWasUpdated()
+    {
+        $this->comment->refresh();
+    }
+
     public function mount(Comment $comment, $ideaUserIdea){
         $this->comment = $comment;
         $this->avatar = $this->comment->user->getAvatar();
@@ -22,6 +29,7 @@ class IdeaComment extends Component
         $this->publishedDate = $this->comment->created_at;
         $this->ideaUserIdea = $ideaUserIdea;
     }
+
 
 
     public function render()

@@ -6,10 +6,13 @@
         successMessage = message;
         setTimeout(() => isOpen = false, 5000)
     }
-}" x-init="Livewire.on('ideaWasUpdated', message => showNotification(message))
+}" x-init="
+Livewire.on('ideaWasUpdated', message => showNotification(message))
 Livewire.on('ideaWasMarkedAsSpam', message => showNotification(message))
 Livewire.on('statusWasUpdated', message => showNotification(message))
-Livewire.on('commentWasAdded', message => showNotification(message))" x-cloak @keydown.escape.window="isOpen=false"
+Livewire.on('commentWasAdded', message => showNotification(message))
+Livewire.on('commentWasDeleted', message => showNotification(message))
+Livewire.on('commentWasUpdated', message => showNotification(message))" x-cloak @keydown.escape.window="isOpen=false"
     x-show="isOpen" x-transition:enter="transition ease-out duration-300"
     x-transition:enter-start="opacity-0 transform translate-x-8"
     x-transition:enter-end="opacity-100 transform translate-x-0" x-transition:leave="transition ease-in duration-150"
