@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('exercices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('exercice_id')->constrained();
-            $table->text('body');
+            $table->foreignId('language_id')->constrained();
+            $table->foreignId('module_id')->constrained();
+            $table->string('title');
+            $table->string('slug')->nullable();
+            $table->text('description');
+            $table->integer('spam_reports')->default(0);
             $table->timestamps();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('exercices');
     }
 };

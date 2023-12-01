@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Idea;
+use App\Models\Exercice;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,7 +20,7 @@ class CommentFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'idea_id' => Idea::factory(),
+            'exercice_id' => Exercice::factory(),
             'body' => $this->faker->paragraph(5),
         ];
     }

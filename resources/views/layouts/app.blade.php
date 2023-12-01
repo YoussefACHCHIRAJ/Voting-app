@@ -54,7 +54,7 @@
     </header>
 
     <main class="container flex max-w-custom mx-auto flex-col md:flex-row">
-        <div class="w-70 md:mr-5 md:mx-0 mx-auto">
+        {{-- <div class="w-70 md:mr-5 md:mx-0 mx-auto">
             <div class="border-2 rounded-xl border-gradient mt-16 bg-white md:sticky md:top-8">
                 <div class="text-center px-6 py-2 pt-6">
                     <h3 class="font-semibold text-base">Add an idea</h3>
@@ -82,9 +82,9 @@
                     </div>
                 @endauth
             </div>
-        </div>
-        <div class="w-full px-2 md:px-0 md:w-175">
-            <livewire:status-filters />
+        </div> --}}
+        <div class="w-full px-2 md:px-0 ">
+            <livewire:module-filters />
             <div class="mt-8">
                 {{ $slot }}
 

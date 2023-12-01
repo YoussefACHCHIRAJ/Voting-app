@@ -14,7 +14,7 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function idea(){
-        return $this->belongsTo(Idea::class);
+    public function exercice(){
+        return $this->belongsTo(Exercice::class);
     }
 }

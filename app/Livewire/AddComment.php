@@ -3,14 +3,14 @@
 namespace App\Livewire;
 
 use App\Models\Comment;
-use App\Models\Idea;
+use App\Models\Exercice;
 use Illuminate\Http\Response;
 use Livewire\Component;
 
 class AddComment extends Component
 {
 
-    public $idea_id;
+    public $exercice_id;
     public $user_id;
     public $body = '';
 
@@ -19,8 +19,8 @@ class AddComment extends Component
     ];
 
 
-    public function mount(Idea $idea){
-        $this->idea_id = $idea->id;
+    public function mount(Exercice $exercice){
+        $this->exercice_id = $exercice->id;
         $this->user_id = auth()->id();
     }
 

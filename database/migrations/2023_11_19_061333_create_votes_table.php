@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('votes', function (Blueprint $table) {
             $table->id();
-            $table->unique(['user_id', 'idea_id']);
+            $table->unique(['user_id', 'exercice_id']);
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('idea_id')->constrained();
+            $table->foreignId('exercice_id')->constrained();
             $table->timestamps();
         });
     }

@@ -1,12 +1,12 @@
-@can('update', $idea)
-    <livewire:edit-idea :idea="$idea" />
+@can('update', $exercice)
+    <livewire:edit-exercice :exercice="$exercice" />
 @endcan
 
-@can('delete', $idea)
-    <livewire:delete-idea :idea="$idea" />
+@can('delete', $exercice)
+    <livewire:delete-exercice :exercice="$exercice" />
 @endcan
 
-<livewire:mark-idea-as-spam :idea="$idea" />
+<livewire:mark-exercice-as-spam :exercice="$exercice" />
 
 
 <livewire:edit-comment />
