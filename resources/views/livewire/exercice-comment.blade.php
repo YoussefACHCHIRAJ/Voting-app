@@ -37,7 +37,7 @@
 
                                 </button>
                                 <ul x-show="isOpen" x-cloak @click.away="isOpen = false"
-                                    class="z-10 absolute w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 ml-8 top-4 -right-40">
+                                    class="z-10 absolute w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 ml-8 top-6 right-0">
                                     @can('update', $comment)
                                         <li
                                             @click="

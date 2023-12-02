@@ -33,7 +33,7 @@ class ExerciceShow extends Component
         $this->exercice->refresh();
     }
 
-    #[On('ExerciceWasMarkedAsSpam')]
+    #[On('exerciceWasMarkedAsSpam')]
     public function ExerciceWasMarkedAsSpam(){
         $this->exercice->refresh();
     }

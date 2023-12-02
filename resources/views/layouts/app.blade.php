@@ -15,7 +15,7 @@
     <!--styles -->
     <livewire:styles />
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/prism.css', 'resources/js/app.js', 'resources/js/prism.js'])
 </head>
 
 <body class="font-sans bg-gray-background text-gray-900 text-sm">
@@ -24,7 +24,12 @@
 
         <div class="flex items-center mt-2 md:mt-0">
             @if (Route::has('login'))
-                <div class="p-4 md:p-6 space-x-3 z-10 flex">
+                <div class="p-4 space-x-3 z-10 flex items-center">
+                    @admin
+                        <a href="{{ route('exercice.create') }}" class="bg-blue text-white px-1 md:px-4 py-2 text-xs md:text-md font-bold rounded-xl hover:bg-blue-hover">
+                            Add new Exercice
+                        </a>
+                    @endadmin
                     @auth
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -54,36 +59,8 @@
     </header>
 
     <main class="container flex max-w-custom mx-auto flex-col md:flex-row">
-        {{-- <div class="w-70 md:mr-5 md:mx-0 mx-auto">
-            <div class="border-2 rounded-xl border-gradient mt-16 bg-white md:sticky md:top-8">
-                <div class="text-center px-6 py-2 pt-6">
-                    <h3 class="font-semibold text-base">Add an idea</h3>
-                    <p class="text-xs mt-4">
-                        @auth
-                            Let us known what you would like and we'll take a look over!</p>
-                    @else
-                        Pleaze login to create an idea
-                    @endauth
-                </div>
 
-                @auth
-                    <livewire:create-idea />
-                @else
-                    <div class="flex flex-col items-center justify-center gap-3 mx-3 px-3 mt-2 md:mt-0">
-                        <a href="{{ route('login') }}"
-                            class="w-full h-11 text-xs text-white bg-blue text-center font-semibold rounded-xl border bordeblue hover:bg-blue-hover transition duration-150 px-6 py-3 ease-in">Log
-                            in</a>
-                        <a href="{{ route('register') }}"
-                            class="flex items-center justify-center w-full h-11 text-xs bg-gray-200 font-semibold rounded-xl border borde-gray-100 hover:border-gray-400 transition duration-150 px-6 py-3 ease-in">
-
-                            Sign up
-                        </a>
-
-                    </div>
-                @endauth
-            </div>
-        </div> --}}
-        <div class="w-full px-2 md:px-0 ">
+        <div class="w-full">
             <livewire:module-filters />
             <div class="mt-8">
                 {{ $slot }}
@@ -92,13 +69,13 @@
         </div>
     </main>
 
+    {{-- <livewire:create-exercice /> --}}
+
     @if (session('success_message'))
         <div x-cloak x-data="{
             isOpen: true,
-        }"
-        x-init="setTimeout(() => isOpen = false, 4000)"
-         @keydown.escape.window="isOpen=false" x-show="isOpen"
-            x-transition:enter="transition ease-out duration-300"
+        }" x-init="setTimeout(() => isOpen = false, 4000)" @keydown.escape.window="isOpen=false"
+            x-show="isOpen" x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="opacity-0 transform translate-x-8"
             x-transition:enter-end="opacity-100 transform translate-x-0"
             x-transition:leave="transition ease-in duration-150"

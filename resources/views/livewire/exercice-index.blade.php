@@ -31,7 +31,8 @@
 
         <div class="mx-4  w-full">
             <h4 class="text-xl font-semibold mt-2 md:mt-0">
-                <a href="{{ route('exercice.show', $exercice) }}" class="exercice-link hover:underline">{{ $exercice->title }}</a>
+                <a href="{{ route('exercice.show', $exercice) }}"
+                    class="exercice-link hover:underline">{{ $exercice->title }}</a>
             </h4>
             @admin
                 @if ($exercice->spam_reports > 0)
@@ -42,12 +43,12 @@
                 {{ $exercice->description }}
             </div>
             <div class="flex flex-col md:flex-row md:items-center justify-between mt-6">
-                <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
+                <div class="flex items-center text-xxs md:text-xs font-semibold space-x-1 md:space-x-2 text-gray-400">
                     <div>{{ $exercice->created_at->diffForHumans() }}</div>
                     <div>&bull;</div>
                     <div>{{ $exercice->language->name }}</div>
                     <div>&bull;</div>
-                    <div>by  <span class="text-gray-700">{{ $exercice->user->name }}</span></div>
+                    <div>by <span class="text-gray-700">{{ $exercice->user->name }}</span></div>
                     <div>&bull;</div>
                     <div class="text-gray-900">{{ $exercice->comments_count }} Comments</div>
                 </div>

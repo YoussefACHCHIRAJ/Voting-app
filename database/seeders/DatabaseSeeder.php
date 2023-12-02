@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
         Language::factory()->create(['name' => 'sql']);
         Language::factory()->create(['name' => 'plsql']);
         Language::factory()->create(['name' => 'java']);
+        Language::factory()->create(['name' => 'bash']);
 
 
         Module::factory()->create(['name' => 'DATABASE']);

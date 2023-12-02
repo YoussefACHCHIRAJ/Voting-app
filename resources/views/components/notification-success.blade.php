@@ -7,8 +7,8 @@
         setTimeout(() => isOpen = false, 5000)
     }
 }" x-init="
-Livewire.on('ideaWasUpdated', message => showNotification(message))
-Livewire.on('ideaWasMarkedAsSpam', message => showNotification(message))
+Livewire.on('ExerciceWasUpdated', message => showNotification(message))
+Livewire.on('exerciceWasMarkedAsSpam', message => showNotification(message))
 Livewire.on('statusWasUpdated', message => showNotification(message))
 Livewire.on('commentWasAdded', message => showNotification(message))
 Livewire.on('commentWasDeleted', message => showNotification(message))

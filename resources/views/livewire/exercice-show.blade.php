@@ -1,13 +1,13 @@
 <div>
     <div class="exercice-container mt-4 bg-white rounded-xl flex">
-        <div class="flex flex-1 flex-col md:flex-row px-4 py-6">
-            <div class="mx-2  w-full">
+        <div class="flex flex-1 flex-col md:flex-row  md:px-4 py-6">
+            <div class="md:mx-2  w-full">
                 <div class="flex items-center gap-3">
-                    <h4 class="text-xl font-semibold">
+                    <h4 class="text-xl font-semibold px-1">
                         <a href="#" class="hover:underline">{{ $exercice->title }}</a>
                     </h4>
                     <div
-                        class="{{ $exercice->module->getStyle() }} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
+                        class="{{ $exercice->module->getStyle() }} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 md:px-4">
                         {{ $exercice->module->name }}
                     </div>
                 </div>
@@ -16,17 +16,13 @@
                         <div class="text-red mb-3">spam reports: {{ $exercice->spam_reports }}</div>
                     @endif
                 @endadmin
-                <div class="text-gray-600 mt-3">
+                <div class="text-gray-600 mt-3 px-1">
                     {{ $exercice->description }}
 
-                    <div class="bg-gray-900 mt-3 p-2 w-full rounded-xl ">
+                    <div class="bg-gray-900 mt-3 p-1 md:p-2 w-full max-w-xs rounded-xl md:max-w-5xl">
                         <pre class="rounded-xl ">
-                            <code class="language-javascript rounded-xl">
-                                const greet = (name) => {
-                                    return `Hello, ${name}!`;
-                                };
-                                const person = 'Alice';
-                                console.log(greet(person));
+                            <code class="language-{{ $exercice->language->name }} rounded-xl">
+{{$exercice->codeblock}}
                             </code>
                         </pre>
                     </div>
@@ -54,7 +50,7 @@
                                     </svg>
                                 </button>
                                 <ul x-show="isOpen" x-cloak @click.away="isOpen = false"
-                                    class="absolute w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 ml-8 top-8 -left-20 z-10 md:left-0 -right-40">
+                                    class="absolute w-44 font-semibold text-left bg-white shadow-dialog rounded-xl py-3 ml-8 top-8 left-0 z-10 md:left- -right-40">
                                     @can('update', $exercice)
                                         <li
                                             @click="

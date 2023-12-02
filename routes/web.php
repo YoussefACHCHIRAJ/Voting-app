@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ExerciceController;
+use App\Livewire\CreateExercice;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ExerciceController::class, 'index'])->name('exercice.index');
 Route::get('/exercices/{exercice:slug}', [ExerciceController::class, 'show'])->name('exercice.show');
+Route::get('/create/exercice', CreateExercice::class)->name('exercice.create');
 
 
 require __DIR__.'/auth.php';

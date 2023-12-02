@@ -18,10 +18,11 @@ class ExerciceFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween(1, 20),
-            'language_id'=> $this->faker->numberBetween(1, 4),
+            'language_id'=> $this->faker->numberBetween(1, 6),
             'module_id' => $this->faker->numberBetween(1, 4),
             'title' => ucwords($this->faker->words(4, true)),
             'description' => $this->faker->paragraph(5),
+            'codeblock' => $this->faker->paragraph(5),
         ];
     }
 }
