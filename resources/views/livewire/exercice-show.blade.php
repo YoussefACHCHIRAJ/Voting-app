@@ -20,8 +20,8 @@
                     {{ $exercice->description }}
 
                     <div class="bg-gray-900 mt-3 p-1 md:p-2 w-full max-w-xs rounded-xl md:max-w-5xl">
-                        <pre class="rounded-xl ">
-                            <code class="language-{{ $exercice->language->name }} rounded-xl">
+                        <pre class="rounded-xl language-{{ $exercice->language->name }}">
+                            <code class="language-{{ $exercice->language->name }}">
 {{$exercice->codeblock}}
                             </code>
                         </pre>
