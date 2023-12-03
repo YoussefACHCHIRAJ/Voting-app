@@ -23,6 +23,7 @@ class DeleteExercice extends Component
         if(auth()->guest() || auth()->user()->cannot('delete', $this->exercice)){
             abort(Response::HTTP_FORBIDDEN);
         }
+
         Vote::where('exercice_id', $this->exercice->id)->delete();
         Comment::where('exercice_id', $this->exercice->id)->delete();
         Exercice::destroy($this->exercice->id);

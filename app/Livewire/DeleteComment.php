@@ -19,9 +19,6 @@ class DeleteComment extends Component
     public function deleteComment(){
         Comment::destroy($this->comment->id);
         $this->dispatch('commentWasDeleted', 'Your Comment has been deleted.');
-
-
-
     }
 
 

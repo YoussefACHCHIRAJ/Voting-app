@@ -35,11 +35,15 @@ class EditExercice extends Component
         $this->languages = Language::All();
         $this->modules = Module::All();
         $this->exercice = $exercice;
-        $this->title = $exercice->title;
-        $this->language_id = $exercice->language_id;
-        $this->module_id = $exercice->module_id;
-        $this->description = $exercice->description;
-        $this->codeblock = $exercice->codeblock;
+        $this->fill(
+            $exercice->only(
+                'title',
+                'language_id',
+                'module_id',
+                'description',
+                'codeblock'
+            )
+            );
     }
 
     public function editExercice()

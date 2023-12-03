@@ -6,7 +6,9 @@ use App\Models\Exercice;
 use App\Models\Language;
 use App\Models\Module;
 use Illuminate\Http\Response;
+
 use Livewire\Component;
+
 
 class CreateExercice extends Component
 {
@@ -43,7 +45,7 @@ class CreateExercice extends Component
 
     public function render()
     {
-        return view('livewire.create-exercice', [
+        return view('livewire.create-exercice')->layout('layouts.app')->with([
             'languages' => Language::all(),
             'modules' => Module::all()
         ]);

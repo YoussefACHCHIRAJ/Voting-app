@@ -31,6 +31,7 @@
                         </a>
                     @endadmin
                     @auth
+                        <p class="text-gray-700 font-bold underline">Welcome <span class="text-blue capitalize">{{ auth()->user()->name }}</span></p>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 

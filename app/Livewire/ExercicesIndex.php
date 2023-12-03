@@ -54,7 +54,7 @@ class ExercicesIndex extends Component
     {
         $modules = Module::all()->pluck('id', 'name');
         $languages = Language::all();
-        return view('livewire.exercices-index', [
+        return view('livewire.exercices-index')->with([
             'exercices' => Exercice::with('user', 'language', 'module')
                 ->when($this->module && $this->module !== 'All', function ($query) use ($modules) {
                     return $query->where('module_id', $modules->get($this->module));

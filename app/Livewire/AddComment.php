@@ -30,7 +30,6 @@ class AddComment extends Component
 
         $this->validate();
         Comment::create($this->all());
-        // the property does not reset proprlly fix later
         $this->reset('body');
         $this->dispatch('commentWasAdded', 'Your comment has been added.');
     }

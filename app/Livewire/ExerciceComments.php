@@ -30,10 +30,11 @@ class ExerciceComments extends Component
         $this->exercice->refresh();
         $this->resetPage();
     }
+    
 
     public function render()
     {
-        return view('livewire.exercice-comments', [
+        return view('livewire.exercice-comments')->with([
             'comments' => Comment::with('user')->where('exercice_id', $this->exercice->id)->paginate(),
             'exerciceUserId' => $this->exercice->user->id
         ]);

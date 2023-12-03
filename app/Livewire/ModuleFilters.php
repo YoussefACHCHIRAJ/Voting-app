@@ -29,7 +29,7 @@ class ModuleFilters extends Component
     {
         $this->module = $newModule;
         $this->dispatch('queryStringUpdateModule', newModule: $newModule);
-        if( $this->getPreviousRouteName() === 'exercice.show')
+        if( $this->getPreviousRouteName() === 'exercice.show' || $this->getPreviousRouteName() === 'exercice.create')
             return redirect()->route('exercice.index', ['module' => $this->module]);
     }
 
